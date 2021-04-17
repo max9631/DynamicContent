@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class EmptyView: UIView, DynamicContentStateViewBase {
+public class DCEmptyView: UIView, DCStateViewBase {
     private lazy var imageView: UIImageView = createImageView()
     private lazy var messageLabel: UILabel = createMessageLabel()
     

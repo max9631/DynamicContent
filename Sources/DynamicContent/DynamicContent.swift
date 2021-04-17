@@ -42,15 +42,15 @@ public class DynamicContent<
     
     private func getView(for state: ConfigurationState) -> UIView {
         if let view = viewCache[state.caseDescription] {
-            (view as? DynamicContentStateViewBase)?.setup(with: state)
+            (view as? DCStateViewBase)?.setup(with: state)
             return view
         }
         let view = state.instantializeView(for: state, contentView: content)
-        (view as? DynamicContentStateViewBase)?.setup(with: state)
+        (view as? DCStateViewBase)?.setup(with: state)
         viewCache[state.caseDescription] = view
         return view as UIView
     }
-    
+
     private func addContentView(contentView: UIView) {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(contentView)

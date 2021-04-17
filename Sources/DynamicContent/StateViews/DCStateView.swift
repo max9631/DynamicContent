@@ -7,16 +7,16 @@
 
 import UIKit
 
-public protocol DynamicContentStateViewBase: UIView {
+public protocol DCStateViewBase: UIView {
     func setup(with: Any)
 }
 
-public protocol DynamicContentStateView: DynamicContentStateViewBase {
+public protocol DCStateView: DCStateViewBase {
     associatedtype StateType: DynamicContentState
     func setup(with: StateType)
 }
 
-extension DynamicContentStateView {
+extension DCStateView {
     public func setup(with object: Any) {
         guard let state = object as? StateType else {
             fatalError("DynamicContent tryied to setup \(String(describing: self)) with \(String(describing: object)), but \(String(describing: self)) only accepts values of type \(String(describing: StateType.self))")

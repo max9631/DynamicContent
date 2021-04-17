@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class LoadingView: UIView, DynamicContentStateViewBase {
+public class DCLoadingView: UIView, DCStateViewBase {
     private lazy var activityIndicator: UIActivityIndicatorView = createActivityIndicator()
     private lazy var messageLabel: UILabel = createMessageLabel()
     

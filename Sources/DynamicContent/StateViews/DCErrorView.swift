@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class ErrorView: UIView, DynamicContentStateViewBase {
+public class DCErrorView: UIView, DCStateViewBase {
     private lazy var imageView: UIImageView = createImageView()
     private lazy var messageLabel: UILabel = createMessageLabel()
     private lazy var button: UIButton = createButton()

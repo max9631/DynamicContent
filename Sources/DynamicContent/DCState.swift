@@ -17,16 +17,16 @@ extension DynamicContentState {
 
 public enum DynamicContentDefaultState: DynamicContentState {
     
-    public static var emptyView: () -> DynamicContentStateViewBase = {
-        EmptyView()
+    public static var emptyView: () -> DCStateViewBase = {
+        DCEmptyView()
     }
     
-    public static var loadingView: () -> DynamicContentStateViewBase = {
-        LoadingView()
+    public static var loadingView: () -> DCStateViewBase = {
+        DCLoadingView()
     }
     
-    public static var errorView: () -> DynamicContentStateViewBase = {
-        ErrorView()
+    public static var errorView: () -> DCStateViewBase = {
+        DCErrorView()
     }
     
     case loading
