@@ -6,15 +6,19 @@
 //
 
 import UIKit
+import Combine
 
-public class DynamicImageView: DynamicContent<DynamicContentDefaultState, UIImageView> {
-    public init(initialState: DynamicContentDefaultState, configuration: ((UIImageView) -> Void)? = nil) {
+open class DynamicImageView: DynamicContent<DynamicContentDefaultState, UIImageView> {
+    public init(embedIn view: UIView? = nil, initialState: DynamicContentDefaultState, configuration: ((UIImageView) -> Void)? = nil) {
         let view = UIImageView()
         configuration?(view)
-        super.init(initialState: initialState, content: view)
+        super.init(embedIn: view, initialState: initialState, content: view)
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
+        content = UIImageView()
+        stateSubject = CurrentValueSubject(.content)
+        initialSetup()
     }
 }

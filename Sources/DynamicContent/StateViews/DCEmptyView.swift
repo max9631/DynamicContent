@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class DCEmptyView: UIView, DCStateViewBase {
+open class DCEmptyView: UIView, DCStateViewBase {
     private lazy var imageView: UIImageView = createImageView()
     private lazy var messageLabel: UILabel = createMessageLabel()
     
@@ -45,7 +45,7 @@ public class DCEmptyView: UIView, DCStateViewBase {
         return image
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
