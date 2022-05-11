@@ -6,15 +6,19 @@
 //
 
 import UIKit
+import Combine
 
-public class DynamicTableView: DynamicContent<DynamicContentDefaultState, UITableView> {
-    public init(initialState: DynamicContentDefaultState, configuration: ((UITableView) -> Void)? = nil) {
+open class DynamicTableView: DynamicContent<DynamicContentDefaultState, UITableView> {
+    public init(embedIn view: UIView? = nil, initialState: DynamicContentDefaultState, configuration: ((UITableView) -> Void)? = nil) {
         let tableView = UITableView()
         configuration?(tableView)
-        super.init(initialState: initialState, content: tableView)
+        super.init(embedIn: view, initialState: initialState, content: tableView)
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
+        content = UITableView()
+        stateSubject = CurrentValueSubject(.content)
+        initialSetup()
     }
 }

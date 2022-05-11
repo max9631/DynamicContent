@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class DCLoadingView: UIView, DCStateViewBase {
+open class DCLoadingView: UIView, DCStateViewBase {
     private lazy var activityIndicator: UIActivityIndicatorView = createActivityIndicator()
     private lazy var messageLabel: UILabel = createMessageLabel()
     
@@ -46,7 +46,7 @@ public class DCLoadingView: UIView, DCStateViewBase {
         return indicator
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

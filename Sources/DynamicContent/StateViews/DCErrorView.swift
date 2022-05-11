@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class DCErrorView: UIView, DCStateViewBase {
+open class DCErrorView: UIView, DCStateViewBase {
     private lazy var imageView: UIImageView = createImageView()
     private lazy var messageLabel: UILabel = createMessageLabel()
     private lazy var button: UIButton = createButton()
@@ -61,7 +61,7 @@ public class DCErrorView: UIView, DCStateViewBase {
         action?()
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

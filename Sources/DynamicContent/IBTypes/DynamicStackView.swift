@@ -6,15 +6,19 @@
 //
 
 import UIKit
+import Combine
 
-public class DynamicStackView: DynamicContent<DynamicContentDefaultState, UIStackView> {
-    public init(initialState: DynamicContentDefaultState, configuration: ((UIStackView) -> Void)? = nil) {
+open class DynamicStackView: DynamicContent<DynamicContentDefaultState, UIStackView> {
+    public init(embedIn view: UIView? = nil, initialState: DynamicContentDefaultState, configuration: ((UIStackView) -> Void)? = nil) {
         let view = UIStackView()
         configuration?(view)
-        super.init(initialState: initialState, content: view)
+        super.init(embedIn: view, initialState: initialState, content: view)
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
+        content = UIStackView()
+        stateSubject = CurrentValueSubject(.content)
+        initialSetup()
     }
 }
