@@ -8,7 +8,7 @@
 import UIKit
 
 public protocol DynamicContentState {
-    func instantializeView(for state: Self, contentView: UIView) -> UIView
+    func instantializeView(contentView: UIView) -> UIView
 }
 
 extension DynamicContentState {
@@ -34,8 +34,8 @@ public enum DynamicContentDefaultState: DynamicContentState {
     case empty(message: String)
     case content
     
-    public func instantializeView(for state: DynamicContentDefaultState, contentView: UIView) -> UIView {
-        switch state {
+    public func instantializeView(contentView: UIView) -> UIView {
+        switch self {
         case .empty:
             return DynamicContentDefaultState.emptyView()
         case .loading:

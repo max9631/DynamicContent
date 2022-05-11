@@ -1,10 +1,14 @@
+//
+//  File.swift
+//
+//
+//  Created by Adam Salih on 26.02.2021.
+//
+
 import UIKit
 import Combine
 
-open class DynamicContent<
-        ConfigurationState: DynamicContentState,
-        ContentViewType: UIView
->: UIView {
+open class DynamicContent<ConfigurationState: DynamicContentState, ContentViewType: UIView>: UIView {
     public var stateSubject: CurrentValueSubject<ConfigurationState, Never>!
     public var state: ConfigurationState {
         get { stateSubject.value }
@@ -55,7 +59,7 @@ open class DynamicContent<
             (view as? DCStateViewBase)?.setup(with: state)
             return view
         }
-        let view = state.instantializeView(for: state, contentView: content)
+        let view = state.instantializeView(contentView: content)
         (view as? DCStateViewBase)?.setup(with: state)
         viewCache[state.caseDescription] = view
         return view as UIView
